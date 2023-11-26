@@ -5,6 +5,7 @@ from dictionary import MESSAGES  # Импортируем словарь соо�
 # Токен бота
 bot = telebot.TeleBot('6702120335:AAFpic7QYsukggZ--9xp6s8F-PERJCl7c5Q')
 
+
 # Текущий язык пользователя
 user_language = {}
 
