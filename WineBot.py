@@ -11,8 +11,8 @@ user_language = {}
 def send_start_message(user_id):
     """Отправляет стартовое сообщение с учетом языка пользователя."""
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    greet_btn = types.KeyboardButton(MESSAGES['buttons']['greet'][user_language[user_id]])
-    change_lang_btn = types.KeyboardButton(MESSAGES['buttons']['change_lang'][user_language[user_id]])
+    greet_btn = types.InlineKeyboardButton(MESSAGES['buttons']['greet'][user_language[user_id]])
+    change_lang_btn = types.InlineKeyboardButton(MESSAGES['buttons']['change_lang'][user_language[user_id]])
     markup.add(greet_btn, change_lang_btn)
     bot.send_message(user_id, MESSAGES['start'][user_language[user_id]], reply_markup=markup)
 
@@ -38,15 +38,15 @@ def get_text_messages(message):
 
     if message.text == MESSAGES['buttons']['greet'][lang]:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        register_btn = types.KeyboardButton(MESSAGES['buttons']['register'][lang])
-        send_photo_btn = types.KeyboardButton(MESSAGES['buttons']['send_photo'][lang])
-        back_btn = types.KeyboardButton(MESSAGES['buttons']['back'][lang])
+        register_btn = types.InlineKeyboardButton(MESSAGES['buttons']['register'][lang])
+        send_photo_btn = types.InlineKeyboardButton(MESSAGES['buttons']['send_photo'][lang])
+        back_btn = types.InlineKeyboardButton(MESSAGES['buttons']['back'][lang])
         markup.add(register_btn, send_photo_btn, back_btn)
         bot.send_message(user_id, MESSAGES['greet'][lang], reply_markup=markup)
 
     elif message.text in [MESSAGES['buttons']['register'][lang], MESSAGES['buttons']['send_photo'][lang]]:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        back_btn = types.KeyboardButton(MESSAGES['buttons']['back'][lang])
+        back_btn = types.InlineKeyboardButton(MESSAGES['buttons']['back'][lang])
         markup.add(back_btn)
         if message.text == MESSAGES['buttons']['register'][lang]:
             bot.send_message(user_id, MESSAGES['register'][lang], reply_markup=markup)
