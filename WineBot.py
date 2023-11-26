@@ -22,6 +22,7 @@ def start(message):
     user_language[message.from_user.id] = 'ru'
     send_start_message(message.from_user.id)
 
+
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     user_id = message.from_user.id
